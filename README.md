@@ -5,15 +5,19 @@ The goal is to implement a simple version of malloc() and its associated functio
 API
 
 void *malloc(size_t size);
+
 This function allocates a block of memory of size bytes. If size is zero, it returns NULL. The returned address must be aligned to a multiple of 8. Also, the memory returned from calloc() and realloc() must be aligned to 8.
 
 void free(void *ptr);
+
 This function frees a block of memory that had previously been allocated. If ptr is NULL, this function does nothing.
 
 void *calloc(size_t nmemb, size_t size);
+
 This function allocates memory for an array of nmemb elements of size bytes each and returns a pointer to the allocated memory. The memory is set to zero. If nmemb or size is 0, then this returns NULL.
 
 void *realloc(void *ptr, size_t size);
+
 realloc() changes the size of the memory block pointed to by ptr to size bytes. Existing contents will not be changed, however, a new memory block with a copy of the original contents may be returned. In any case, the contents will be unchanged to the minimum of the old and new sizes; and any newly allocated memory will be uninitialized.
 
 If ptr is NULL, then the call is equivalent to just calling malloc(size) for all values of size; if size is equal to zero, and ptr is not NULL, then the call is equivalent to free(ptr). Unless ptr is NULL, it must have been returned by an earlier call to malloc(), calloc() or realloc(). If a new block had to be allocated to accommodate the new size, the old block should be freed.
